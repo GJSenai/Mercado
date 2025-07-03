@@ -1,6 +1,7 @@
 package application;
 	
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import connectionFactory.ConnectionDatabase;
 import dao.ClienteDAO;
@@ -28,15 +29,39 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		Cliente cliente = new Cliente();
 		ClienteDAO clienteDAO = new ClienteDAO();
+		ArrayList<Cliente> clientes = new ArrayList<>();
 		
-		cliente.setNomeCliente("Pedro Alvarez");
-		cliente.setCpfCliente("85295175236");
-		cliente.setDataNasc("1999-01-28");
-		cliente.setTelefone("6399200000");
-		cliente.setEndereco("Rua dos Bobos, número 0");
-		cliente.setEmail("pedro@gmail.com");
+		clientes = clienteDAO.read();
 		
-		clienteDAO.create(cliente);
+		for(int i = 0; i< clientes.size(); i++) {
+			cliente = clientes.get(i);
+			System.out.print("||");
+			System.out.print(cliente.getIdCliente());
+			System.out.print("|");
+			System.out.print(cliente.getNomeCliente());
+			System.out.print("|");
+			System.out.print(cliente.getCpfCliente());
+			System.out.print("|");
+			System.out.print(cliente.getDataNasc());
+			System.out.print("|");
+			System.out.print(cliente.getTelefone());
+			System.out.print("|");
+			System.out.print(cliente.getEndereco());
+			System.out.print("|");			
+			System.out.print(cliente.getEmail());
+			System.out.println("");
+		}
+		
+//		cliente.setNomeCliente("Pedro Alvarez");
+//		cliente.setCpfCliente("85295175236");
+//		cliente.setDataNasc("1999-01-28");
+//		cliente.setTelefone("6399200000");
+//		cliente.setEndereco("Rua dos Bobos, número 0");
+//		cliente.setEmail("pedro@gmail.com");
+//		
+//		clienteDAO.create(cliente);
+		
+		
 		
 		launch(args);
 	}
