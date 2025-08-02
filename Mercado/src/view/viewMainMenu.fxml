@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.paint.Color?>
+
+<AnchorPane maxHeight="720.0" maxWidth="1080.0" minHeight="720.0" minWidth="1080.0" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.28" prefHeight="720.0" prefWidth="1080.0">
+        <items>
+          <!-- SIDEBAR -->
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="280.0" style="-fx-background-color: #1546a0; -fx-background-radius: 15 0 0 15;">
+            <children>
+              <VBox layoutX="0.0" layoutY="0.0" prefHeight="720.0" prefWidth="280.0" alignment="TOP_CENTER" spacing="22.0">
+                <children>
+                  <!-- Ícone Carrinho (troque para imagem se desejar) -->
+                  <Text text="🛒" fill="WHITE" style="-fx-font-size: 72px;" />
+                  
+                  <!-- Usuário -->
+                  <VBox alignment="CENTER" spacing="0.0">
+                    <children>
+                      <Text text="Usuário:" fill="WHITE" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+                      <Text text="Gildomar Junior" fill="WHITE" style="-fx-font-size: 16px;" />
+                    </children>
+                  </VBox>
+                  
+                  <!-- Botões Sidebar -->
+                  <VBox spacing="16.0" alignment="CENTER">
+                    <children>
+                      <Button text="REGISTRAR VENDA" prefWidth="200" prefHeight="42"
+                        style="-fx-background-color: #00c8e6; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" />
+                      <Button text="MENUPRINCIPAL" prefWidth="200" prefHeight="42"
+                        style="-fx-background-color: #3a5ea5; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" />
+                      <Button text="CLIENTES" prefWidth="200" prefHeight="42"
+                        style="-fx-background-color: #00c8e6; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" />
+                      <Button text="PRODUTOS" prefWidth="200" prefHeight="42"
+                        style="-fx-background-color: #00c8e6; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" />
+                    </children>
+                  </VBox>
+
+                  <!-- Espaço flexível -->
+                  <VBox prefHeight="160.0"/>
+                  
+                  <!-- Botão Sair ao rodapé -->
+                  <Button text="SAIR" prefWidth="140" prefHeight="36"
+                    style="-fx-background-color: #02175d; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10;" />
+                </children>
+                <padding>
+                  <Insets top="28" left="18" right="18" bottom="22"/>
+                </padding>
+              </VBox>
+            </children>
+          </AnchorPane>
+          
+          <!-- ÁREA PRINCIPAL -->
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="800.0" style="-fx-background-color: #fff; -fx-background-radius: 0 15 15 0;">
+            <children>
+              <VBox layoutX="0.0" layoutY="0.0" prefWidth="800.0" spacing="12.0" alignment="TOP_LEFT">
+                <children>
+                  <!-- Mensagem Bem-Vindo -->
+                  <Text text="SEJA BEM-VINDO" style="-fx-font-size: 22px; -fx-font-family: 'Lucida Console'; -fx-font-weight: bold;"/>
+                  
+                  <!-- Linha azul -->
+                  <Rectangle height="3.0" width="740.0" fill="#00c8e6" arcWidth="8" arcHeight="8" />
+
+                  <!-- Card total vendas -->
+                  <HBox alignment="CENTER_LEFT" prefHeight="44.0" style="-fx-background-color: #1546a0; -fx-background-radius: 8;">
+                    <children>
+                      <Text text="SEU TOTAL DE VENDAS ESSE MÊS" fill="WHITE" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 12 0 12 22;" />
+                    </children>
+                  </HBox>
+
+                  <!-- Linha azul -->
+                  <Rectangle height="3.0" width="740.0" fill="#00c8e6" arcWidth="8" arcHeight="8" />
+
+                  <!-- Produtos a Vencer -->
+                  <Text text="PRODUTOS A VENCER" style="-fx-font-size: 18px; -fx-font-family: 'Lucida Console'; -fx-font-weight: bold;" />
+                  
+                  <TableView prefHeight="140.0" prefWidth="740.0" style="-fx-background-radius: 10; -fx-border-color: #4a7fc9; -fx-background-color: #e5f1ff;">
+                    <columns>
+                      <TableColumn prefWidth="150.0" text="Produto" />
+                      <TableColumn prefWidth="100.0" text="Validade" />
+                      <TableColumn prefWidth="80.0" text="Quantidade" />
+                      <TableColumn prefWidth="120.0" text="Categoria" />
+                      <TableColumn prefWidth="150.0" text="Fornecedor" />
+                    </columns>
+                  </TableView>
+
+                  <!-- Linha azul -->
+                  <Rectangle height="3.0" width="740.0" fill="#00c8e6" arcWidth="8" arcHeight="8" />
+
+                  <!-- Produtos com Estoque Baixo -->
+                  <Text text="PRODUTOS COM ESTOQUE BAIXO" style="-fx-font-size: 18px; -fx-font-family: 'Lucida Console'; -fx-font-weight: bold;" />
+
+                  <TableView prefHeight="140.0" prefWidth="740.0" style="-fx-background-radius: 10; -fx-border-color: #4a7fc9; -fx-background-color: #e5f1ff;">
+                    <columns>
+                      <TableColumn prefWidth="150.0" text="Produto" />
+                      <TableColumn prefWidth="100.0" text="Estoque Atual" />
+                      <TableColumn prefWidth="80.0" text="Mínimo" />
+                      <TableColumn prefWidth="120.0" text="Categoria" />
+                      <TableColumn prefWidth="150.0" text="Fornecedor" />
+                    </columns>
+                  </TableView>
+
+                  <!-- Linha azul final -->
+                  <Rectangle height="3.0" width="740.0" fill="#00c8e6" arcWidth="8" arcHeight="8" />
+                </children>
+                <padding>
+                  <Insets top="26" left="26" right="26" bottom="12"/>
+                </padding>
+              </VBox>
+            </children>
+          </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
