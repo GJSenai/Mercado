@@ -5,16 +5,16 @@ public class VendaProduto {
 			private String idVenda;
 		    private String idProduto;
 		    private String quantidade;
-		    private String valorToral;
+		    private String valorTotal;
 		    
 		  //Metodo construtor carregado --
-			public VendaProduto(String idVendaProduto, String idVenda, String idProduto, String quantidade, String valorToral) {
+			public VendaProduto(String idVendaProduto, String idVenda, String idProduto, String quantidade, String valorTotal) {
 				super();
 				this.idVendaProduto = idVendaProduto;
 				this.idVenda = idVenda;
 				this.idProduto = idProduto;
 				this.quantidade = quantidade;
-				this.valorToral = valorToral;
+				this.valorTotal = valorTotal;
 			}
 
 			//Metodo construtor vazio --
@@ -62,13 +62,13 @@ public class VendaProduto {
 			}
 
 
-			public String getValorToral() {
-				return valorToral;
+			public String getValorTotal() {
+				return valorTotal;
 			}
 
 
-			public void setValorToral(String valorToral) {
-				this.valorToral = valorToral;
+			public void setValorTotal(String valorTotal) {
+				this.valorTotal = valorTotal;
 			}
 		    
 		    

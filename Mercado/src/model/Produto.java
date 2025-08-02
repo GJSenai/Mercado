@@ -3,7 +3,7 @@ package model;
 public class Produto {
 	
 	private String idProduto;
-	private String nomeProduto;
+	private String nomeProd;
 	private String codBarra;
 	private String tipoUn;
 	private String dataFab;
@@ -12,11 +12,11 @@ public class Produto {
 	private String estoque;
 	
 	//Metodo construtor carregado --
-	public Produto(String idProduto, String nomeProduto, String codBarra, String tipoUn, String dataFab, String dataVal,
+	public Produto(String idProduto, String nomePro, String codBarra, String tipoUn, String dataFab, String dataVal,
 			String precoUn, String estoque) {
 		super();
 		this.idProduto = idProduto;
-		this.nomeProduto = nomeProduto;
+		this.nomeProd = nomeProd;
 		this.codBarra = codBarra;
 		this.tipoUn = tipoUn;
 		this.dataFab = dataFab;
@@ -36,11 +36,11 @@ public class Produto {
 	public void setIdProduto(String idProduto) {
 		this.idProduto = idProduto;
 	}
-	public String getNomeProduto() {
-		return nomeProduto;
+	public String getNomeProd() {
+		return nomeProd;
 	}
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
+	public void setNomeProd(String nomeProd) {
+		this.nomeProd = nomeProd;
 	}
 	public String getCodBarra() {
 		return codBarra;

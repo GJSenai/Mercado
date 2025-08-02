@@ -1,68 +1,56 @@
 package application;
 	
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import connectionFactory.ConnectionDatabase;
 import dao.ClienteDAO;
+import dao.FuncionarioDAO;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import model.Cliente;
+import model.Funcionario;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
+	
+	private static Stage stage;
+	private static Scene main;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,1240,720);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
+			
+			stage = primaryStage;
+			
+			Parent fxmlLogin = FXMLLoader.load(getClass().getResource("/view/viewLogin.fxml"));
+			main = new Scene(fxmlLogin);
+			
+			primaryStage.setScene(main);
+			primaryStage.setTitle("Java App");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+	public static void TelaHome() throws IOException{
+		FXMLLoader fxmlHome = new FXMLLoader();
+		fxmlHome.setLocation(Main.class.getResource("/view/viewMainMenu.fxml"));
+		Parent TelaHome = fxmlHome.load();
+		main = new Scene(TelaHome);
+		stage.setTitle("Pegue e Pague - Menu Principal");
+		stage.setScene(main);
+		stage.setResizable(false);
+		stage.centerOnScreen();
+		stage.show();
+	}
 	public static void main(String[] args) {
-		Cliente cliente = new Cliente();
-		ClienteDAO clienteDAO = new ClienteDAO();
-		ArrayList<Cliente> clientes = new ArrayList<>();
-		
-		clientes = clienteDAO.read();
-		
-		for(int i = 0; i< clientes.size(); i++) {
-			cliente = clientes.get(i);
-			System.out.print("||");
-			System.out.print(cliente.getIdCliente());
-			System.out.print("|");
-			System.out.print(cliente.getNomeCliente());
-			System.out.print("|");
-			System.out.print(cliente.getCpfCliente());
-			System.out.print("|");
-			System.out.print(cliente.getDataNasc());
-			System.out.print("|");
-			System.out.print(cliente.getTelefone());
-			System.out.print("|");
-			System.out.print(cliente.getEndereco());
-			System.out.print("|");			
-			System.out.print(cliente.getEmail());
-			System.out.println("");
-		}
-		
-//		cliente.setNomeCliente("Pedro Alvarez");
-//		cliente.setCpfCliente("85295175236");
-//		cliente.setDataNasc("1999-01-28");
-//		cliente.setTelefone("6399200000");
-//		cliente.setEndereco("Rua dos Bobos, número 0");
-//		cliente.setEmail("pedro@gmail.com");
-//		
-//		clienteDAO.create(cliente);
-		
-		
-		
 		launch(args);
 	}
 }
+
