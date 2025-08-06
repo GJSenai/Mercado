@@ -11,11 +11,12 @@ public class Funcionario {
 	private String email;
 	private String cargo;
 	private String nivel;
+	private String senha;
 	
 	
 	//Metodo construtor carregado --
 	public Funcionario(String idFuncionario, String nomeFuncionario, String cpfFuncionario, String dataNasc,
-			String telefone, String endereco, String email, String cargo, String nivel) {
+			String telefone, String endereco, String email, String cargo, String nivel, String senha) {
 		super();
 		this.idFuncionario = idFuncionario;
 		this.nomeFuncionario = nomeFuncionario;
@@ -25,7 +26,8 @@ public class Funcionario {
 		this.endereco = endereco;
 		this.email = email;
 		this.cargo = cargo;
-		this.nivel = nivel;	
+		this.nivel = nivel;
+		this.senha = senha;
 		
 	//Metodo construtor vazio --	
 	}
@@ -87,6 +89,12 @@ public class Funcionario {
 	}
 	public void setNivel(String nivel) {
 		this.nivel = nivel;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	
 	
