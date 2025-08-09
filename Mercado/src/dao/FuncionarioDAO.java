@@ -191,4 +191,25 @@ public class FuncionarioDAO {
 
         return funcionario;
     }
+    
+    public String readTotalVendido(String cpf) {
+    	Connection con = ConnectionDatabase.getConnection();
+    	PreparedStatement stmt = null;
+    	ResultSet rs = null;
+    	String totalVendido = null;
+    	try {
+    		stmt = con.prepareStatement("select f.nomeFuncionario,SUM(precoTotal) as totalVendido from Funcionario f, Venda v where f.idFuncionario = v.idFuncionario and cpfFuncionario = ? group by f.nomeFuncionario");
+    		stmt.setString(1, cpf);
+    		rs = stmt.executeQuery();
+    		while(rs.next()) {
+    			totalVendido = rs.getString("totalVendido");
+    		}
+    	} catch (SQLException e) {
+    		throw new RuntimeException("Erro ao ler informação", e);
+    		}
+    	 finally {
+    		ConnectionDatabase.closeConnection(con, stmt, rs);
+    }
+    	return totalVendido;
+	}
 }

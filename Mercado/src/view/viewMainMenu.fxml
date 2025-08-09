@@ -84,7 +84,7 @@
                   <Rectangle arcHeight="8" arcWidth="8" fill="#00c8e6" height="3.0" width="740.0" />
 
                   <!-- Produtos a Vencer -->
-                  <Text style="-fx-font-size: 18px; -fx-font-family: 'Lucida Console'; -fx-font-weight: bold;" text="PRODUTOS A VENCER" />
+                  <Text style="-fx-font-size: 18px; -fx-font-family: 'Lucida Console'; -fx-font-weight: bold;" text="PRODUTOS COM ESTOQUE BAIXO" />
                   
                   <TableView fx:id="tableProdutosEB" prefHeight="140.0" prefWidth="740.0" style="-fx-background-radius: 10; -fx-border-color: #4a7fc9; -fx-background-color: #e5f1ff;">
                     <columns>
@@ -107,7 +107,7 @@
                       <TableColumn fx:id="columnIndice2" prefWidth="56.80004930496216" />
                       <TableColumn fx:id="columnNomeProduto2" prefWidth="155.19998168945312" text="Nome do Produto" />
                       <TableColumn fx:id="columnCodBarra2" prefWidth="238.39996337890625" text="Código de Barras" />
-                      <TableColumn fx:id="columnEstoque" prefWidth="161.59991455078125" text="Estoque" />
+                      <TableColumn fx:id="columnEstoque2" prefWidth="161.59991455078125" text="Estoque" />
                       <TableColumn fx:id="columnDataVal" prefWidth="135.20001220703125" text="Data de Validade" />
                     </columns>
                   </TableView>

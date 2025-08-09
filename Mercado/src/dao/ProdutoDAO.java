@@ -147,4 +147,75 @@ public class ProdutoDAO {
 
         return produtos;
     }
+    
+    public ArrayList<Produto> readProdutoEB() {
+        Connection con = ConnectionDatabase.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        ArrayList<Produto> produtos = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM VW_ProdutoEstoqueBaixo ORDER BY estoque");
+            rs = stmt.executeQuery();
+            int i = 1;
+            while (rs.	next()) {
+                Produto produto = new Produto();
+                
+                produto.setIdProduto(""+i++);
+                produto.setNomeProd(rs.getString("nomeProd"));
+                produto.setCodBarra(rs.getString("codBarra"));
+                produto.setTipoUn(rs.getString("tipoUn"));
+                produto.setDataFab(rs.getString("dataFab"));
+                produto.setDataVal(rs.getString("dataVal"));
+                produto.setPrecoUn(rs.getString("precoUn"));
+                produto.setEstoque(rs.getString("estoque"));            
+                produtos.add(produto);
+                
+                
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao ler os produtos!", e);
+        } finally {
+            ConnectionDatabase.closeConnection(con, stmt, rs);
+        }
+
+        return produtos;
+    }
+    
+    public ArrayList<Produto> readProdutoAV() {
+        Connection con = ConnectionDatabase.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        ArrayList<Produto> produtos = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM VW_ProdutoProximoAVencer ORDER BY dataVal");
+            rs = stmt.executeQuery();
+            int i = 1;
+            while (rs.	next()) {
+                Produto produto = new Produto();
+                
+                produto.setIdProduto(""+i++);
+                produto.setNomeProd(rs.getString("nomeProd"));
+                produto.setCodBarra(rs.getString("codBarra"));
+                produto.setTipoUn(rs.getString("tipoUn"));
+                produto.setDataFab(rs.getString("dataFab"));
+                produto.setDataVal(rs.getString("dataVal"));
+                produto.setPrecoUn(rs.getString("precoUn"));
+                produto.setEstoque(rs.getString("estoque"));            
+                produtos.add(produto);
+                
+                
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao ler os produtos!", e);
+        } finally {
+            ConnectionDatabase.closeConnection(con, stmt, rs);
+        }
+
+        return produtos;
+    }
+    
 }

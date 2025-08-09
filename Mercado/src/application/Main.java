@@ -14,6 +14,7 @@ import model.Cliente;
 import model.Funcionario;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 
 
@@ -30,6 +31,9 @@ public class Main extends Application {
 			
 			Parent fxmlLogin = FXMLLoader.load(getClass().getResource("/view/viewLogin.fxml"));
 			main = new Scene(fxmlLogin);
+			
+			stage.setTitle("Tela de Login");
+			stage.getIcons().add(new Image(getClass().getResourceAsStream("/image/carrinho_compras.png")));
 			
 			primaryStage.setScene(main);
 			primaryStage.setTitle("Java App");
@@ -49,8 +53,21 @@ public class Main extends Application {
 		stage.centerOnScreen();
 		stage.show();
 	}
+	public static void TelaLogin() throws IOException{
+		FXMLLoader fxmlHome = new FXMLLoader();
+		fxmlHome.setLocation(Main.class.getResource("/view/viewLogin.fxml"));
+		Parent TelaLogin = fxmlHome.load();
+		main = new Scene(TelaLogin);
+		stage.setTitle("Pegue e Pague - Login");		
+		stage.setScene(main);
+		stage.setResizable(false);
+		stage.centerOnScreen();
+		stage.show();
+	}
 	public static void main(String[] args) {
 		launch(args);
 	}
 }
+
+
 

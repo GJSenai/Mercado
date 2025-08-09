@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -14,7 +15,7 @@
    <children>
       <ImageView fitHeight="720.0" fitWidth="1080.0" layoutY="2.0" pickOnBounds="true">
          <image>
-            <Image url="@backgroudlogin.png" />
+            <Image url="@../Image/backgroudlogin.png" />
          </image>
       </ImageView>
       <Pane layoutX="285.0" layoutY="123.0" prefHeight="418.0" prefWidth="538.0" style="-fx-background-color: blue; -fx-background-radius: 15;">
@@ -24,16 +25,17 @@
                   <Font name="Lucida Console" size="22.0" />
                </font>
             </Text>
+            <CheckBox fx:id="cbLembrarLogin" layoutX="188.0" layoutY="230.0" text="Lembrar login" />
             <Text layoutX="217.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha">
                <font>
                   <Font name="Lucida Console" size="22.0" />
                </font>
             </Text>
-            <Button fx:id="btLogin" layoutX="207.0" layoutY="235.0" mnemonicParsing="false" onAction="#actionLogin" prefHeight="35.0" prefWidth="101.0" style="-fx-background-radius: 15; -fx-background-color: white;" text="Entrar">
+            <Button fx:id="btLogin" layoutX="203.0" layoutY="263.0" mnemonicParsing="false" onAction="#actionLogin" prefHeight="35.0" prefWidth="101.0" style="-fx-background-radius: 15; -fx-background-color: white;" text="Entrar">
                <font>
                   <Font name="Lucida Console" size="19.0" />
                </font></Button>
-            <TextField fx:id="txtUser" layoutX="179.0" layoutY="131.0" style="-fx-background-radius: 10;" />
+            <TextField fx:id="txtUser" layoutX="183.0" layoutY="131.0" style="-fx-background-radius: 10;" />
          </children>
       </Pane>
       <PasswordField fx:id="txtSenha" layoutX="468.0" layoutY="318.0" style="-fx-background-radius: 10;" />

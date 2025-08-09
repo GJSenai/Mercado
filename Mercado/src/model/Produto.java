@@ -12,7 +12,7 @@ public class Produto {
 	private String estoque;
 	
 	//Metodo construtor carregado --
-	public Produto(String idProduto, String nomePro, String codBarra, String tipoUn, String dataFab, String dataVal,
+	public Produto(String idProduto, String nomeProd, String codBarra, String tipoUn, String dataFab, String dataVal,
 			String precoUn, String estoque) {
 		super();
 		this.idProduto = idProduto;
