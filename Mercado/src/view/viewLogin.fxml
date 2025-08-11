@@ -18,26 +18,37 @@
             <Image url="@../Image/backgroudlogin.png" />
          </image>
       </ImageView>
-      <Pane layoutX="285.0" layoutY="123.0" prefHeight="418.0" prefWidth="538.0" style="-fx-background-color: blue; -fx-background-radius: 15;">
+      <Pane layoutX="282.0" layoutY="164.0" prefHeight="418.0" prefWidth="538.0" style="-fx-background-color: #3498db80; -fx-background-radius: 15;" stylesheets="@styles.css">
          <children>
-            <Text layoutX="213.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario">
+            <Text fill="WHITE" layoutX="330.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Usuario">
                <font>
-                  <Font name="Lucida Console" size="22.0" />
+                  <Font size="22.0" />
                </font>
             </Text>
-            <CheckBox fx:id="cbLembrarLogin" layoutX="188.0" layoutY="230.0" text="Lembrar login" />
-            <Text layoutX="217.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha">
+            <CheckBox fx:id="cbLembrarLogin" layoutX="303.0" layoutY="201.0" text="Lembrar login" textFill="WHITE" />
+            <Text fill="WHITE" layoutX="339.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Senha">
                <font>
-                  <Font name="Lucida Console" size="22.0" />
+                  <Font size="22.0" />
                </font>
             </Text>
-            <Button fx:id="btLogin" layoutX="203.0" layoutY="263.0" mnemonicParsing="false" onAction="#actionLogin" prefHeight="35.0" prefWidth="101.0" style="-fx-background-radius: 15; -fx-background-color: white;" text="Entrar">
+            <Button fx:id="btLogin" layoutX="321.0" layoutY="233.0" mnemonicParsing="false" onAction="#actionLogin" prefHeight="35.0" prefWidth="101.0" style="-fx-background-radius: 15; -fx-background-color: blue;" text="Entrar" textFill="WHITE" wrapText="true">
                <font>
-                  <Font name="Lucida Console" size="19.0" />
-               </font></Button>
-            <TextField fx:id="txtUser" layoutX="183.0" layoutY="131.0" style="-fx-background-radius: 10;" />
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <TextField fx:id="txtUser" layoutX="296.0" layoutY="101.0" style="-fx-background-radius: 10;" />
+            <PasswordField fx:id="txtSenha" layoutX="299.0" layoutY="169.0" style="-fx-background-radius: 10;" />
+            <ImageView fitHeight="225.0" fitWidth="216.0" layoutX="36.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/carrinhoLogin.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btSairLogin" layoutX="320.0" layoutY="313.0" mnemonicParsing="false" onAction="#actionSairLogin" prefHeight="35.0" prefWidth="101.0" style="-fx-background-radius: 15; -fx-background-color: #3498db;" text="Sair" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
-      <PasswordField fx:id="txtSenha" layoutX="468.0" layoutY="318.0" style="-fx-background-radius: 10;" />
    </children>
 </AnchorPane>

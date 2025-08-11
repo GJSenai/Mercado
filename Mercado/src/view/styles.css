@@ -1,0 +1,14 @@
+
+.button:hover {
+    -fx-background-color:  #4a7fc9; 
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2); 
+    -fx-cursor: hand; 
+}
+
+
+.sair-button:hover {
+	-fx-background-color: #e53935; 
+	-fx-text-fill: white;
+	-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 0, 3);
+	-fx-cursor: hand;
+}

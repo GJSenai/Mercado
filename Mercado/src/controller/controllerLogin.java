@@ -1,15 +1,18 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.prefs.Preferences;
 
 import application.Main;
 import dao.FuncionarioDAO;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -19,6 +22,9 @@ public class controllerLogin {
 
     @FXML
     private Button btLogin;
+    
+    @FXML
+    private Button btSairLogin;
 
     @FXML
     private PasswordField txtSenha;
@@ -83,5 +89,25 @@ public class controllerLogin {
         saudacao.setHeaderText(header);
         saudacao.setContentText(content);
         saudacao.show();
+    }
+    
+    @FXML
+    void actionSairLogin(ActionEvent event) {
+        // 1. Cria a caixa de diálogo de confirmação.
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Sair");
+        alert.setHeaderText("Você está prestes a fechar a aplicação.");
+        alert.setContentText("Deseja realmente sair?");
+
+        // 2. Mostra a caixa de diálogo e espera pela resposta do usuário.
+        Optional<ButtonType> result = alert.showAndWait();
+
+        // 3. Verifica se o usuário clicou em "OK".
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // Se sim, fecha a aplicação.
+            System.out.println("Saindo da aplicação...");
+            Platform.exit();
+        }
+        // Se o usuário clicar em "Cancelar" ou fechar a caixa, nada acontece.
     }
 }

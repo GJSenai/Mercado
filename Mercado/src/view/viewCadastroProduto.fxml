@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!-- 
+  Este é o contêiner principal. 
+  Ele foi projetado para parecer uma janela de popup (modal).
+-->
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #D3D3D3; -fx-border-width: 1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerCadastroProduto">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="700.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+         </padding>
+         <children>
+            <!-- ==================== CABEÇALHO ==================== -->
+            <VBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CADASTRO DE PRODUTO">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="640.0" style="-fx-background-color: #1546a0; -fx-background-radius: 8;" text="CADASTRO/EDIÇÃO DE PRODUTO" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#29c8fd" height="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
+               </children>
+            </VBox>
+
+            <!-- ==================== CAMPOS DO FORMULÁRIO ==================== -->
+            <VBox spacing="15.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <!-- Linha 1: Nome e Código de Barra -->
+                  <HBox spacing="30.0">
+                     <children>
+                        <VBox prefWidth="305.0" spacing="5.0">
+                           <children>
+                              <Label text="Nome">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtNome" prefHeight="40.0" promptText="Ex: Name prod" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
+                           </children>
+                        </VBox>
+                        <VBox prefWidth="305.0" spacing="5.0">
+                           <children>
+                              <Label text="Codigo de barra">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtCodBarra" prefHeight="40.0" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <!-- Linha 2: Datas e Preço -->
+                  <HBox spacing="30.0">
+                     <children>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Data de Fabricação">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtDataFabricacao" prefHeight="40.0" prefWidth="190.0" promptText="##/##/####" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Data de Validade">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtDataValidade" prefHeight="40.0" prefWidth="190.0" promptText="##/##/####" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Preço de Unidade">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtPreco" prefHeight="40.0" prefWidth="190.0" promptText="R$ 00,00" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <!-- Linha 3: Tipo e Estoque -->
+                  <HBox spacing="30.0">
+                     <children>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Tipo UN">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtTipoUn" prefHeight="40.0" prefWidth="190.0" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Estoque">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="txtEstoque" prefHeight="40.0" prefWidth="190.0" promptText="Ex 0" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+
+            <!-- ==================== BOTÕES DE AÇÃO ==================== -->
+            <HBox alignment="CENTER" spacing="30.0">
+               <children>
+                  <Button fx:id="btSalvar" mnemonicParsing="false" onAction="#actionSalvar" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #29c8fd; -fx-background-radius: 25;" text="Salvar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="📝" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#actionCancelar" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #02175d; -fx-background-radius: 25;" text="Cancelar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="❌" />
+                     </graphic>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            
+            <!-- Linha azul final -->
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#29c8fd" height="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
+
