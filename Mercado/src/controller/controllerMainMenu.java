@@ -1,4 +1,3 @@
-// src/main/java/controller/controllerMainMenu.java
 package controller;
 
 import java.io.IOException;
@@ -106,8 +105,8 @@ public class controllerMainMenu implements Initializable {
     }
 
     @FXML
-    void actionHome(ActionEvent event) {
-
+    void actionHome(ActionEvent event) throws IOException {
+    	Main.TelaHome();
     }
 
     @FXML
@@ -140,8 +139,8 @@ public class controllerMainMenu implements Initializable {
     }
 
     @FXML
-    void btClientes(ActionEvent event) {
-
+    void actionClientes(ActionEvent event) throws IOException {
+    	Main.TelaCliente();
     }
 
     @Override

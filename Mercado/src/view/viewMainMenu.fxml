@@ -44,10 +44,10 @@
                     <children>
                       <Button fx:id="btRegistrarVenda" onAction="#actionRegistrarVenda" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="REGISTRAR VENDA" />
                       <Button fx:id="btHome" onAction="#actionHome" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="HOME" />
-                      <Button fx:id="btClientes" onAction="#btClientes" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="CLIENTES" />
+                      <Button fx:id="btClientes" onAction="#actionClientes" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="CLIENTES" />
                       <Button fx:id="btProdutos" onAction="#actionProdutos" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="PRODUTOS" />
-                              <Button fx:id="btFuncionarios" onAction="#actionFuncionarios" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="FUNCIONARIOS" />
-                              <Button fx:id="btVendas" onAction="#actionVendas" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="VENDAS" />
+                      <Button fx:id="btFuncionarios" onAction="#actionFuncionarios" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="FUNCIONARIOS" />
+                      <Button fx:id="btVendas" onAction="#actionVendas" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="VENDAS" />
                     </children>
                   </VBox>
 

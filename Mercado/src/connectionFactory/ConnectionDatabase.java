@@ -10,11 +10,11 @@ public class ConnectionDatabase {
    // Endereço do Driver SQL Server
    private static final String Driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
    // Endereço do Banco de Dados
-   private static final String URL = "jdbc:sqlserver://localhost;encrypt=false;databaseName=Mercado";
+   private static final String URL = "jdbc:sqlserver://localhost:49770;encrypt=false;databaseName=Mercado";
    // Usuario do banco de Dados
    private static final String user = "sa";
    // Senha do Banco de Dados
-   private static final String password = "Senailab03";
+   private static final String password = "SistemaNoturnoSenai";
 
 
    public static Connection getConnection() {

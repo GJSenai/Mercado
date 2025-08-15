@@ -31,7 +31,7 @@
                   <Font size="22.0" />
                </font>
             </Text>
-            <Button fx:id="btLogin" layoutX="321.0" layoutY="233.0" mnemonicParsing="false" onAction="#actionLogin" prefHeight="35.0" prefWidth="101.0" style="-fx-background-radius: 15; -fx-background-color: blue;" text="Entrar" textFill="WHITE" wrapText="true">
+            <Button fx:id="btLogin" defaultButton="true" layoutX="321.0" layoutY="233.0" mnemonicParsing="false" onAction="#actionLogin" prefHeight="35.0" prefWidth="101.0" style="-fx-background-radius: 15; -fx-background-color: blue;" text="Entrar" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

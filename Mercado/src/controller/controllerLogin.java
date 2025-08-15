@@ -41,13 +41,21 @@ public class controllerLogin {
     private static final String PREF_KEY_USER = "rememberedUser";
 
     @FXML
-    public void initialize() {
+    public void initialize () {
         Preferences prefs = Preferences.userNodeForPackage(controllerLogin.class);
         String savedUser = prefs.get(PREF_KEY_USER, "");
         if (!savedUser.isEmpty()) {
             txtUser.setText(savedUser);
             cbLembrarLogin.setSelected(true);
         }
+        txtSenha.setOnAction(e->{
+			try {
+				actionLogin(null);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
     }
 
     @FXML
