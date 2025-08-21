@@ -10,6 +10,7 @@ public class Produto {
 	private String dataVal;
 	private String precoUn;
 	private String estoque;
+	private String precoTotal;
 	
 	//Metodo construtor carregado --
 	public Produto(String idProduto, String nomeProd, String codBarra, String tipoUn, String dataFab, String dataVal,
@@ -77,6 +78,14 @@ public class Produto {
 	}
 	public void setEstoque(String estoque) {
 		this.estoque = estoque;
+	}
+
+	public String getPrecoTotal() {
+		return precoTotal;
+	}
+
+	public void setPrecoTotal(String precoTotal) {
+		this.precoTotal = precoTotal;
 	}
 	
 	

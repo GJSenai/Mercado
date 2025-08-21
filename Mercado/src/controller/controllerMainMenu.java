@@ -115,8 +115,8 @@ public class controllerMainMenu implements Initializable {
     }
 
     @FXML
-    void actionRegistrarVenda(ActionEvent event) {
-
+    void actionRegistrarVenda(ActionEvent event) throws IOException {
+    	Main.TelaRegistrarVenda();
     }
 
     @FXML

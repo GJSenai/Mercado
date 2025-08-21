@@ -1,24 +1,110 @@
+/* Botão Login - Verde Neon */
 
-.button:hover {
-    -fx-background-color:  #4a7fc9; 
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2); 
-    -fx-cursor: hand; 
+#btLogin, #btSairLogin {
+    -fx-pref-width: 120px;   /* ajuste conforme o tamanho desejado */
+    -fx-pref-height: 40px;
+}
+
+#btLogin, #btSalvar, #btRegistrar, #btCadastrar, #btCastrastrarCliente {
+    -fx-background-color: #0d1b2a;   /* fundo escuro para contraste */
+    -fx-text-fill: #00ff88;
+    -fx-font-weight: bold;
+
+    -fx-border-color: #00ff88;       /* verde neon */
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+
+    -fx-effect: dropshadow(gaussian, #00ff88, 35, 0.4, 0, 0);
+}
+
+/* Hover do botão Login */
+#btLogin, #btSalvar, #btRegistrar, #btCadastrar, #btCastrastrarCliente :hover {
+    -fx-effect: dropshadow(gaussian, #00ff88, 35, 0.6, 0, 0);
+    -fx-text-fill: #00ff88;
+}
+
+/* Botão Sair - Vermelho Neon */
+#btSairLogin, #btSair, #btCancelar, #btExcluir, #btExcluirCliente  {
+    -fx-background-color: #2b0000;
+    -fx-text-fill: #CD5C5C;
+    -fx-font-weight: bold;
+
+    -fx-border-color: #CD5C5C;       /* vermelho neon */
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+
+    -fx-effect: dropshadow(gaussian, #ff0033, 35, 0.4, 0, 0);
+}
+
+/* Hover do botão Sair */
+#btSairLogin, #btSair, #btCancelar, #btExcluir, #btExcluirCliente :hover {
+    -fx-effect: dropshadow(gaussian, #ff0033, 35, 0.6, 0, 0);
+    -fx-text-fill: #ff6666;
 }
 
 
-.sair-button:hover {
-	-fx-background-color: #e53935; 
-	-fx-text-fill: white;
-	-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 0, 3);
-	-fx-cursor: hand;
-}
 
-.date-picker {
+#btRegistrarVenda, #btHome, #btClientes, #btProdutos, #btFuncionarios, #btVendas {
+    -fx-background-color: #0d1b2a;   /* fundo escuro para destacar o neon */
+    -fx-text-fill: #00f3ff;          /* texto azul neon */
+    -fx-font-weight: bold;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
+
+    /* borda azul */
+    -fx-border-color: #00f3ff;
+    -fx-border-width: 2;
+
+    /* brilho neon */
+    -fx-effect: dropshadow(gaussian, #00f3ff, 20, 0.4, 0, 0);
 }
 
-.date-picker .arrow-button {
+/* Hover (acende mais) */
+#btRegistrarVenda, #btHome, #btClientes, #btProdutos, #btFuncionarios, #btVendas :hover {
+    -fx-effect: dropshadow(gaussian, #00f3ff, 35, 0.6, 0, 0);
+    -fx-text-fill:  #00f3ff;
+}
+
+#btEditarCliente, #btEditar {
+    -fx-background-color: #1a1a1a;    /* fundo escuro para destacar o neon */
+    -fx-text-fill: #fff176;           /* texto amarelo claro */
+    -fx-font-weight: bold;
     -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    /* borda neon */
+    -fx-border-color: #ffeb3b;        /* amarelo neon */
+    -fx-border-width: 2;
+
+    /* brilho neon */
+    -fx-effect: dropshadow(gaussian, #ffeb3b, 20, 0.4, 0, 0);
 }
 
+/* Hover (acende mais) */
+#btEditarCliente, #btEditar :hover {
+    -fx-effect: dropshadow(gaussian, #ffeb3b, 35, 0.6, 0, 0);
+    -fx-text-fill: yellow;
+}
+
+#btPesquisarCliente, #btPesquisa, #btAdicionar {
+    -fx-background-color: #1a1a1a;     /* fundo escuro para destacar o neon */
+    -fx-text-fill: #ffcc80;            /* texto laranja claro */
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    /* borda neon */
+    -fx-border-color: #ff9800;         /* laranja neon */
+    -fx-border-width: 2;
+
+    /* brilho neon */
+    -fx-effect: dropshadow(gaussian, #ff9800, 20, 0.4, 0, 0);
+}
+
+/* Hover (acende mais) */
+#btPesquisarCliente, #btPesquisa, #btAdicionar :hover {
+    -fx-effect: dropshadow(gaussian, #ff9800, 35, 0.6, 0, 0);
+    -fx-text-fill: orange;
+}

@@ -5,6 +5,7 @@ module Mercado {
 	requires javafx.graphics;
 	requires javafx.base;
 	requires java.prefs;
+	requires org.controlsfx.controls;
 	
 	opens application to javafx.graphics, javafx.fxml;
 	opens controller to javafx.graphics, javafx.fxml;

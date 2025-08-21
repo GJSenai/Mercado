@@ -90,6 +90,20 @@ public class Main extends Application {
 		cadCliente.showAndWait();
 	}
 	
+	private static Stage cadVenda;
+	public static void TelaRegistrarVenda() throws IOException {
+		FXMLLoader registrarVenda = new FXMLLoader();
+		registrarVenda.setLocation(Main.class.getResource("/view/viewRegistrarVenda.fxml"));
+		Parent cadastroRegistrarVenda = registrarVenda.load();
+		Scene scene2 = new Scene(cadastroRegistrarVenda);
+		cadVenda = new Stage ();
+		cadVenda.setTitle("Registrar Venda");
+		cadVenda.initModality(Modality.APPLICATION_MODAL);
+		cadVenda.setScene(scene2);
+		cadVenda.centerOnScreen();
+		cadVenda.showAndWait();
+	}
+	
 	
 	public static void main(String[] args) {
 		launch(args);

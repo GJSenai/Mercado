@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -26,7 +27,7 @@
                         <Image url="@../Image/backgroudlogin.png" />
                      </image>
                   </ImageView>
-              <VBox alignment="TOP_CENTER" layoutX="0.0" layoutY="0.0" prefHeight="720.0" prefWidth="280.0" spacing="22.0">
+              <VBox alignment="TOP_CENTER" layoutX="0.0" layoutY="0.0" prefHeight="720.0" prefWidth="280.0" spacing="22.0" stylesheets="@styles.css">
                 <children>
                   <!-- Ícone Carrinho (troque para imagem se desejar) -->
                   <Text fill="WHITE" style="-fx-font-size: 72px;" text="🛒" />
@@ -42,12 +43,30 @@
                   <!-- Botões Sidebar -->
                   <VBox alignment="CENTER" spacing="16.0">
                     <children>
-                      <Button fx:id="btRegistrarVenda" onAction="#actionRegistrarVenda" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="REGISTRAR VENDA" />
-                      <Button fx:id="btHome" onAction="#actionHome" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="HOME" />
-                      <Button fx:id="btClientes" onAction="#actionClientes" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="CLIENTES" />
-                      <Button fx:id="btProdutos" onAction="#actionProdutos" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="PRODUTOS" />
-                      <Button fx:id="btFuncionarios" onAction="#actionFuncionarios" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="FUNCIONARIOS" />
-                      <Button fx:id="btVendas" onAction="#actionVendas" prefHeight="42" prefWidth="200" style="-fx-background-color: #29c8fd; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 12;" text="VENDAS" />
+                      <Button fx:id="btRegistrarVenda" onAction="#actionRegistrarVenda" prefHeight="42" prefWidth="200" text="REGISTRAR VENDA">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                      <Button fx:id="btHome" onAction="#actionHome" prefHeight="42" prefWidth="200" text="HOME">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                      <Button fx:id="btClientes" onAction="#actionClientes" prefHeight="42" prefWidth="200" text="CLIENTES">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                      <Button fx:id="btProdutos" onAction="#actionProdutos" prefHeight="42" prefWidth="200" text="PRODUTOS">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                      <Button fx:id="btFuncionarios" onAction="#actionFuncionarios" prefHeight="42" prefWidth="200" text="FUNCIONARIOS">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                      <Button fx:id="btVendas" onAction="#actionVendas" prefHeight="42" prefWidth="200" text="VENDAS">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
                     </children>
                   </VBox>
 
@@ -55,7 +74,10 @@
                   <VBox prefHeight="160.0" />
                   
                   <!-- Botão Sair ao rodapé -->
-                  <Button fx:id="btSair" onAction="#actionSair" prefHeight="36" prefWidth="140" style="-fx-background-color: #02175d; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10;" text="SAIR" />
+                  <Button fx:id="btSair" onAction="#actionSair" prefHeight="36" prefWidth="140" text="SAIR">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                 </children>
                 <padding>
                   <Insets bottom="22" left="18" right="18" top="28" />
