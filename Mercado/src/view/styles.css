@@ -19,10 +19,30 @@
 }
 
 /* Hover do botão Login */
-#btLogin, #btSalvar, #btRegistrar, #btCadastrar, #btCastrastrarCliente :hover {
+#btLogin:hover {
     -fx-effect: dropshadow(gaussian, #00ff88, 35, 0.6, 0, 0);
     -fx-text-fill: #00ff88;
 }
+
+#btSalvar:hover {
+    -fx-effect: dropshadow(gaussian, #00ff88, 35, 0.6, 0, 0);
+    -fx-text-fill: #00ff88;
+}
+#btRegistrar:hover {
+    -fx-effect: dropshadow(gaussian, #00ff88, 35, 0.6, 0, 0);
+    -fx-text-fill: #00ff88;
+}
+#btCadastrar:hover {
+    -fx-effect: dropshadow(gaussian, #00ff88, 35, 0.6, 0, 0);
+    -fx-text-fill: #00ff88;
+}
+
+#btCastrastrarCliente:hover {
+    -fx-effect: dropshadow(gaussian, #00ff88, 35, 0.6, 0, 0);
+    -fx-text-fill: #00ff88;
+}
+
+
 
 /* Botão Sair - Vermelho Neon */
 #btSairLogin, #btSair, #btCancelar, #btExcluir, #btExcluirCliente  {
@@ -39,14 +59,107 @@
 }
 
 /* Hover do botão Sair */
-#btSairLogin, #btSair, #btCancelar, #btExcluir, #btExcluirCliente :hover {
+#btSairLogin:hover {
+    -fx-effect: dropshadow(gaussian, #ff0033, 35, 0.6, 0, 0);
+    -fx-text-fill: #ff6666;
+}
+
+#btSair:hover {
+    -fx-effect: dropshadow(gaussian, #ff0033, 35, 0.6, 0, 0);
+    -fx-text-fill: #ff6666;
+}
+#btCancelar:hover {
+    -fx-effect: dropshadow(gaussian, #ff0033, 35, 0.6, 0, 0);
+    -fx-text-fill: #ff6666;
+}
+
+#btExcluir:hover {
+    -fx-effect: dropshadow(gaussian, #ff0033, 35, 0.6, 0, 0);
+    -fx-text-fill: #ff6666;
+}
+
+#btExcluirCliente:hover {
     -fx-effect: dropshadow(gaussian, #ff0033, 35, 0.6, 0, 0);
     -fx-text-fill: #ff6666;
 }
 
 
 
-#btRegistrarVenda, #btHome, #btClientes, #btProdutos, #btFuncionarios, #btVendas {
+#btRegistrarVenda {
+    -fx-background-color: #0d1b2a;   /* fundo escuro para destacar o neon */
+    -fx-text-fill: #00f3ff;          /* texto azul neon */
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    /* borda azul */
+    -fx-border-color: #00f3ff;
+    -fx-border-width: 2;
+
+    /* brilho neon */
+    -fx-effect: dropshadow(gaussian, #00f3ff, 20, 0.4, 0, 0);
+}
+
+#btHome {
+    -fx-background-color: #0d1b2a;   /* fundo escuro para destacar o neon */
+    -fx-text-fill: #00f3ff;          /* texto azul neon */
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    /* borda azul */
+    -fx-border-color: #00f3ff;
+    -fx-border-width: 2;
+
+    /* brilho neon */
+    -fx-effect: dropshadow(gaussian, #00f3ff, 20, 0.4, 0, 0);
+}
+
+#btClientes {
+    -fx-background-color: #0d1b2a;   /* fundo escuro para destacar o neon */
+    -fx-text-fill: #00f3ff;          /* texto azul neon */
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    /* borda azul */
+    -fx-border-color: #00f3ff;
+    -fx-border-width: 2;
+
+    /* brilho neon */
+    -fx-effect: dropshadow(gaussian, #00f3ff, 20, 0.4, 0, 0);
+}
+
+#btProdutos {
+    -fx-background-color: #0d1b2a;   /* fundo escuro para destacar o neon */
+    -fx-text-fill: #00f3ff;          /* texto azul neon */
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    /* borda azul */
+    -fx-border-color: #00f3ff;
+    -fx-border-width: 2;
+
+    /* brilho neon */
+    -fx-effect: dropshadow(gaussian, #00f3ff, 20, 0.4, 0, 0);
+}
+#btFuncionarios {
+    -fx-background-color: #0d1b2a;   /* fundo escuro para destacar o neon */
+    -fx-text-fill: #00f3ff;          /* texto azul neon */
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    /* borda azul */
+    -fx-border-color: #00f3ff;
+    -fx-border-width: 2;
+
+    /* brilho neon */
+    -fx-effect: dropshadow(gaussian, #00f3ff, 20, 0.4, 0, 0);
+}
+
+#btVendas {
     -fx-background-color: #0d1b2a;   /* fundo escuro para destacar o neon */
     -fx-text-fill: #00f3ff;          /* texto azul neon */
     -fx-font-weight: bold;
@@ -62,7 +175,31 @@
 }
 
 /* Hover (acende mais) */
-#btRegistrarVenda, #btHome, #btClientes, #btProdutos, #btFuncionarios, #btVendas :hover {
+ #btFuncionarios:hover {
+    -fx-effect: dropshadow(gaussian, #00f3ff, 35, 0.6, 0, 0);
+    -fx-text-fill:  #00f3ff;
+}
+
+#btRegistrarVenda:hover {
+    -fx-effect: dropshadow(gaussian, #00f3ff, 35, 0.6, 0, 0);
+    -fx-text-fill:  #00f3ff;
+}
+
+#btHome:hover {
+    -fx-effect: dropshadow(gaussian, #00f3ff, 35, 0.6, 0, 0);
+    -fx-text-fill:  #00f3ff;
+}
+
+ #btClientes:hover {
+    -fx-effect: dropshadow(gaussian, #00f3ff, 35, 0.6, 0, 0);
+    -fx-text-fill:  #00f3ff;
+}
+
+#btProdutos:hover {
+    -fx-effect: dropshadow(gaussian, #00f3ff, 35, 0.6, 0, 0);
+    -fx-text-fill:  #00f3ff;
+}
+#btVendas:hover {
     -fx-effect: dropshadow(gaussian, #00f3ff, 35, 0.6, 0, 0);
     -fx-text-fill:  #00f3ff;
 }
@@ -83,7 +220,12 @@
 }
 
 /* Hover (acende mais) */
-#btEditarCliente, #btEditar :hover {
+#btEditarCliente:hover {
+    -fx-effect: dropshadow(gaussian, #ffeb3b, 35, 0.6, 0, 0);
+    -fx-text-fill: yellow;
+}
+
+#btEditar:hover {
     -fx-effect: dropshadow(gaussian, #ffeb3b, 35, 0.6, 0, 0);
     -fx-text-fill: yellow;
 }
@@ -104,7 +246,16 @@
 }
 
 /* Hover (acende mais) */
-#btPesquisarCliente, #btPesquisa, #btAdicionar :hover {
+
+#btPesquisarCliente:hover {
+    -fx-effect: dropshadow(gaussian, #ff9800, 35, 0.6, 0, 0);
+    -fx-text-fill: orange;
+}
+#btPesquisa:hover {
+    -fx-effect: dropshadow(gaussian, #ff9800, 35, 0.6, 0, 0);
+    -fx-text-fill: orange;
+}
+#btAdicionar:hover {
     -fx-effect: dropshadow(gaussian, #ff9800, 35, 0.6, 0, 0);
     -fx-text-fill: orange;
 }

@@ -19,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.Cliente;
 import model.Produto;
 
@@ -86,16 +87,114 @@ public class ControllerRegistrarVenda implements Initializable {
 
 	@FXML
 	private TextField txtVendedor;
-	
+
 	@FXML
-    void actionCPFClick(MouseEvent event) {
+	void actionCPFClick(MouseEvent event) {
+		if (txtCliente.getText().length() > 2) {
+			ClienteDAO clienteDAO = new ClienteDAO();
+			Cliente cliente = new Cliente();
+			cliente.setNomeCliente(txtCliente.getText());
+			ArrayList<Cliente> clientes = new ArrayList<>();
+			clientes = clienteDAO.search(cliente.getNomeCliente());
+			cliente = clientes.get(0);
+			txtCpf.setText(cliente.getCpfCliente());
 
-    }
+		} else {
+			txtCpf.setText("");
+		}
 
-    @FXML
-    void actionCPFType(KeyEvent event) {
+	}
 
-    }
+	@FXML
+	void actionNomeClick(MouseEvent event) {
+		if (txtCpf.getText().length() > 2) {
+			ClienteDAO clienteDAO = new ClienteDAO();
+			Cliente cliente = new Cliente();
+			cliente.setCpfCliente(txtCpf.getText());
+			ArrayList<Cliente> clientes = new ArrayList<>();
+			clientes = clienteDAO.search(cliente.getCpfCliente());
+			cliente = clientes.get(0);
+			txtCliente.setText(cliente.getNomeCliente());
+
+		} else {
+			txtCliente.setText("");
+		}
+	}
+
+	@FXML
+	void actionCPFType(KeyEvent event) {
+		if (txtCliente.getText().length() > 2) {
+			ClienteDAO clienteDAO = new ClienteDAO();
+			Cliente cliente = new Cliente();
+			cliente.setNomeCliente(txtCliente.getText());
+			ArrayList<Cliente> clientes = new ArrayList<>();
+			clientes = clienteDAO.search(cliente.getNomeCliente());
+			cliente = clientes.get(0);
+			txtCpf.setText(cliente.getCpfCliente());
+		} else {
+			txtCpf.setText("");
+		}
+
+	}
+
+	@FXML
+	void actionNomeType(KeyEvent event) {
+		if (txtCpf.getText().length() > 2) {
+			ClienteDAO clienteDAO = new ClienteDAO();
+			Cliente cliente = new Cliente();
+			cliente.setCpfCliente(txtCpf.getText());
+			ArrayList<Cliente> clientes = new ArrayList<>();
+			clientes = clienteDAO.search(cliente.getCpfCliente());
+			cliente = clientes.get(0);
+			txtCliente.setText(cliente.getNomeCliente());
+
+		} else {
+			txtCliente.setText("");
+		}
+
+	}
+
+	@FXML
+	void actionProdutoClick(MouseEvent event) {
+		if (txtProduto.getText().length() > 2) {
+			ProdutoDAO produtoDAO = new ProdutoDAO();
+			Produto produto = new Produto();
+			produto.setNomeProd(txtProduto.getText());
+			ArrayList<Produto> produtos = new ArrayList<>();
+			produtos = produtoDAO.search(produto.getNomeProd());
+			produto = produtos.get(0);
+			txtUN.setValue(produto.getTipoUn());
+			double precoUn = Double.parseDouble(produto.getPrecoUn());
+			txtPrecoUN.setText(String.format("R$ %.2f",precoUn));
+			txtPrecoUN.setEditable(false);
+
+		} else {
+			txtUN.setValue("");
+			txtPrecoUN.setText("");
+		}
+	}
+
+	@FXML
+	void actionProdutoType(KeyEvent event) {
+
+		if (txtProduto.getText().length() > 2) {
+			ProdutoDAO produtoDAO = new ProdutoDAO();
+			Produto produto = new Produto();
+			produto.setNomeProd(txtProduto.getText());
+			ArrayList<Produto> produtos = new ArrayList<>();
+			produtos = produtoDAO.search(produto.getNomeProd());
+			produto = produtos.get(0);
+			txtUN.setValue(produto.getTipoUn());
+			double precoUn = Double.parseDouble(produto.getPrecoUn());
+			txtPrecoUN.setText(String.format("R$ %.2f",precoUn));
+			txtPrecoUN.setEditable(false);
+
+		} else {
+			txtUN.setValue("");
+			txtPrecoUN.setText("");
+		}
+
+	}
 
 	@FXML
 	void actionAdicionar(ActionEvent event) {
@@ -104,7 +203,8 @@ public class ControllerRegistrarVenda implements Initializable {
 
 	@FXML
 	void actionCancelar(ActionEvent event) {
-
+		Stage stage = (Stage) btCancelar.getScene().getWindow();
+		stage.close();
 	}
 
 	@FXML
@@ -125,31 +225,12 @@ public class ControllerRegistrarVenda implements Initializable {
 		txtPrecoUN.setEditable(false);
 		txtTotalCompra.setEditable(false);
 
-		ClienteDAO clienteDAO = new ClienteDAO();
-		ArrayList<Cliente> arrayClientes = clienteDAO.read();
-		String[] listaClientes = new String[clienteDAO.read().size()];
-		for (int i = 0; i < clienteDAO.read().size(); i++) {
-			Cliente cliente = new Cliente();
-			cliente = arrayClientes.get(i);
-			listaClientes[i] = cliente.getNomeCliente();
-		}
 		
-		TextFields.bindAutoCompletion(txtCliente, listaClientes);
-		
-		ProdutoDAO produtoDAO = new ProdutoDAO();
-		ArrayList<Produto> arrayProdutos = produtoDAO.read();
-		String[] listaProdutos = new String[produtoDAO.read().size()];
-		for (int i = 0; i < produtoDAO.read().size(); i++) {
-			Produto produto = new Produto();
-			produto = arrayProdutos.get(i);
-			listaProdutos[i] = produto.getNomeProd();
-		}
-		
-		TextFields.bindAutoCompletion(txtProduto, listaProdutos);
-		
-		
+
+		TextFields.bindAutoCompletion(txtCliente, controllerLogin.listaClientes).setOnAutoCompleted(event -> actionCPFClick(null));
+		TextFields.bindAutoCompletion(txtCpf, controllerLogin.listaClientes2).setOnAutoCompleted(event -> actionNomeClick(null));
+		TextFields.bindAutoCompletion(txtProduto, controllerLogin.listaProdutos).setOnAutoCompleted(event -> actionProdutoClick(null));
+
 	}
-	
-	
 
 }

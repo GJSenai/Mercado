@@ -49,7 +49,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtCliente" onKeyPressed="#actionCPFType" onKeyTyped="#actionCPFType" onMouseClicked="#actionCPFClick" prefHeight="40.0" promptText="Ex: Name Surname" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
+                        <TextField fx:id="txtCliente" onKeyPressed="#actionCPFType" onKeyTyped="#actionCPFType" prefHeight="40.0" promptText="Ex: Name Surname" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
                      </children>
                   </VBox>
                   <VBox prefWidth="345.0" spacing="5.0">
@@ -59,7 +59,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtCpf" prefHeight="40.0" promptText="###.###.###-##" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
+                        <TextField fx:id="txtCpf" onKeyPressed="#actionNomeType" onKeyTyped="#actionNomeType" prefHeight="40.0" promptText="###.###.###-##" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
                      </children>
                   </VBox>
                </children>
@@ -88,7 +88,7 @@
                                     <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtProduto" prefHeight="40.0" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
+                              <TextField fx:id="txtProduto" onKeyPressed="#actionProdutoType" onKeyTyped="#actionProdutoType" prefHeight="40.0" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
                            </children>
                         </VBox>
                         <Button fx:id="btAdicionar" mnemonicParsing="false" onAction="#actionAdicionar" prefHeight="40.0" prefWidth="130.0" stylesheets="@styles.css" text="Adicionar" textFill="WHITE">
