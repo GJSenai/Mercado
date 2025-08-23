@@ -108,7 +108,7 @@
                               <Label text="Quatidade">
                                  <font><Font name="System Bold" size="14.0" /></font>
                               </Label>
-                              <TextField fx:id="txtQuantidade" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
+                              <TextField fx:id="txtQuantidade" onKeyPressed="#actionQuantidade" onKeyTyped="#actionQuantidade" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
                            </children>
                         </VBox>
                         <VBox spacing="5.0">
@@ -143,11 +143,10 @@
             <!-- ==================== TABELA DE ITENS DA VENDA ==================== -->
             <TableView fx:id="tableProdutos" prefHeight="200.0" style="-fx-border-color: #4a7fc9; -fx-border-radius: 8; -fx-background-color: #e5f1ff;" VBox.vgrow="ALWAYS">
               <columns>
-                <TableColumn fx:id="columnItem" prefWidth="50.0" text="Item" />
-                <TableColumn fx:id="columnProduto" prefWidth="250.0" text="Produto" />
+                <TableColumn fx:id="columnIndiceProduto" prefWidth="50.0" text="Indice" />
+                <TableColumn fx:id="columnNomeProduto" prefWidth="250.0" text="Nome" />
                   <TableColumn fx:id="columnQuantidade" prefWidth="80.0" text="Qtd." />
                   <TableColumn fx:id="columnPreco" prefWidth="120.0" text="Preço UN" />
-                  <TableColumn fx:id="columnDesconto" prefWidth="100.0" text="Desconto" />
                   <TableColumn fx:id="columnPrecoTotal" prefWidth="138.0" text="Preço Total" />
               </columns>
                <columnResizePolicy>

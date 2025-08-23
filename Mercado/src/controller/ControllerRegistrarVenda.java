@@ -2,21 +2,27 @@ package controller;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.textfield.TextFields;
 
 import dao.ClienteDAO;
 import dao.ProdutoDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -38,13 +44,13 @@ public class ControllerRegistrarVenda implements Initializable {
 	private TableColumn<Produto, String> columnDesconto;
 
 	@FXML
-	private TableColumn<Produto, String> columnItem;
+	private TableColumn<Produto, String> columnIndiceProduto;
 
 	@FXML
 	private TableColumn<Produto, String> columnPreco;
 
 	@FXML
-	private TableColumn<Produto, String> columnProduto;
+	private TableColumn<Produto, String> columnNomeProduto;
 
 	@FXML
 	private TableColumn<Produto, String> columnQuantidade;
@@ -165,7 +171,7 @@ public class ControllerRegistrarVenda implements Initializable {
 			produto = produtos.get(0);
 			txtUN.setValue(produto.getTipoUn());
 			double precoUn = Double.parseDouble(produto.getPrecoUn());
-			txtPrecoUN.setText(String.format("R$ %.2f",precoUn));
+			txtPrecoUN.setText(String.format("R$ %.2f", precoUn));
 			txtPrecoUN.setEditable(false);
 
 		} else {
@@ -186,7 +192,7 @@ public class ControllerRegistrarVenda implements Initializable {
 			produto = produtos.get(0);
 			txtUN.setValue(produto.getTipoUn());
 			double precoUn = Double.parseDouble(produto.getPrecoUn());
-			txtPrecoUN.setText(String.format("R$ %.2f",precoUn));
+			txtPrecoUN.setText(String.format("R$ %.2f", precoUn));
 			txtPrecoUN.setEditable(false);
 
 		} else {
@@ -197,10 +203,72 @@ public class ControllerRegistrarVenda implements Initializable {
 	}
 
 	@FXML
+	void actionQuantidade(KeyEvent event) {
+		if (!txtPrecoUN.getText().isEmpty())
+			if (txtQuantidade.getText().matches("^\\d+$")) {
+				{
+					if (!txtQuantidade.getText().isEmpty()) {
+						double quantidade = Double.parseDouble(txtQuantidade.getText());
+						double precoUni = Double
+								.parseDouble(txtPrecoUN.getText().replace("R$ ", "").replace(",", ".").trim());
+						if (quantidade >= 15) {
+							double desconto = (precoUni * quantidade) * 0.10;
+							txtDesconto.setText("" + String.format("%.2f", desconto));
+						} else if (quantidade < 15) {
+							txtDesconto.setText("0.00");
+						}
+					}
+				}
+			}
+		}
+	
+	private void carregarTableProdutos(ArrayList<Produto> ArrayProdutos) {
+	       ObservableList<Produto> produtosVendidos =
+	       FXCollections.observableArrayList(ArrayProdutos);
+	       columnIndiceProduto.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+	       columnNomeProduto.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
+	       columnQuantidade.setCellValueFactory(new PropertyValueFactory<>("estoque"));    
+	       columnPrecoUn.setCellValueFactory(new PropertyValueFactory<>("precoUn"));
+	       columnPrecoTotal.setCellValueFactory(new PropertyValueFactory<>("precoTotal"));
+	       columnTipoUn.setCellValueFactory(new PropertyValueFactory<>("tipoUn"));
+	       
+	       tableProdutos.setItems(produtosVendidos);
+	   }
+		
+	}
+private ArrayList<Produto> arrayProdutos = new ArrayList<>();
+	@FXML
 	void actionAdicionar(ActionEvent event) {
+		  if(txtNomeCliente.getText().isEmpty() || txtProduto.getText().isEmpty() ||
+	               txtCpf.getText().isEmpty() || txtPrecoUN.getText().isEmpty() ||
+	               txtQuantidade.getText().isEmpty()) {
+	           Alert erro = new Alert(AlertType.ERROR);
+	           erro.setTitle("Erro!");
+	           erro.setContentText("Erro! verifique os campos e tente novamente!");
+	           erro.show();
+	       }else {
+	           Produto produto = new Produto();
+	           produto.setNomeProd(txtProduto.getText());
+	           produto.setTipoUn(txtTipoUN.getValue());
+	           produto.setPrecoUn(txtPrecoUN.getText());
+	           produto.setPrecoTotal(txtValorTotal.getText());
+	           produto.setEstoque(txtQuantidade.getText());
+	           
+	       double desconto = Double.parseDouble(txtDesconto.getText().replace(",", "."));
+	       double precoUni = Double.parseDouble(txtPrecoUN.getText().replace(",", "."));
+	       double quantidade = Double.parseDouble(txtQuantidade.getText());
 
+	       double precoTotal = precoUni * quantidade - desconto;
+	       produto.setPrecoTotal("R$ "+ precoTotal);
+	       Double totalCompra = Double.parseDouble(txtValorTotal.getText().replace(",", "."));
+	       totalCompra = totalCompra + precoTotal;
+	       txtValorTotal.setText("" + String.format("%.2f", totalCompra));
+	       }
 	}
 
+	
+	
+	
 	@FXML
 	void actionCancelar(ActionEvent event) {
 		Stage stage = (Stage) btCancelar.getScene().getWindow();
@@ -211,6 +279,8 @@ public class ControllerRegistrarVenda implements Initializable {
 	void actionRegistrar(ActionEvent event) {
 
 	}
+	
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -225,11 +295,14 @@ public class ControllerRegistrarVenda implements Initializable {
 		txtPrecoUN.setEditable(false);
 		txtTotalCompra.setEditable(false);
 
+		TextFields.bindAutoCompletion(txtCliente, controllerLogin.listaClientes)
+				.setOnAutoCompleted(event -> actionCPFClick(null));
+		TextFields.bindAutoCompletion(txtCpf, controllerLogin.listaClientes2)
+				.setOnAutoCompleted(event -> actionNomeClick(null));
+		TextFields.bindAutoCompletion(txtProduto, controllerLogin.listaProdutos)
+				.setOnAutoCompleted(event -> actionProdutoClick(null));
 		
-
-		TextFields.bindAutoCompletion(txtCliente, controllerLogin.listaClientes).setOnAutoCompleted(event -> actionCPFClick(null));
-		TextFields.bindAutoCompletion(txtCpf, controllerLogin.listaClientes2).setOnAutoCompleted(event -> actionNomeClick(null));
-		TextFields.bindAutoCompletion(txtProduto, controllerLogin.listaProdutos).setOnAutoCompleted(event -> actionProdutoClick(null));
+		
 
 	}
 
