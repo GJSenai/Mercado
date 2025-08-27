@@ -91,14 +91,26 @@
                               <TextField fx:id="txtProduto" onKeyPressed="#actionProdutoType" onKeyTyped="#actionProdutoType" prefHeight="40.0" style="-fx-background-color: #f0f8ff; -fx-background-radius: 20; -fx-border-color: #ddebf7; -fx-border-radius: 20;" />
                            </children>
                         </VBox>
-                        <Button fx:id="btAdicionar" mnemonicParsing="false" onAction="#actionAdicionar" prefHeight="40.0" prefWidth="130.0" stylesheets="@styles.css" text="Adicionar" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
+                        <VBox alignment="BASELINE_LEFT" spacing="5.0">
+                           <children>
+                              <Button fx:id="btAdicionar" mnemonicParsing="false" onAction="#actionAdicionar" prefHeight="40.0" prefWidth="130.0" stylesheets="@styles.css" text="Adicionar" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btRemover" mnemonicParsing="false" onAction="#actionRemover" prefHeight="40.0" prefWidth="130.0" stylesheets="@styles.css" text="Remover" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                   <HBox spacing="15.0">
@@ -147,6 +159,7 @@
                 <TableColumn fx:id="columnNomeProduto" prefWidth="250.0" text="Nome" />
                   <TableColumn fx:id="columnQuantidade" prefWidth="80.0" text="Qtd." />
                   <TableColumn fx:id="columnPreco" prefWidth="120.0" text="Preço UN" />
+                  <TableColumn fx:id="columnTipoUN" prefWidth="138.0" text="Tipo UN" />
                   <TableColumn fx:id="columnPrecoTotal" prefWidth="138.0" text="Preço Total" />
               </columns>
                <columnResizePolicy>

@@ -3,12 +3,15 @@ package controller;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.textfield.TextFields;
 
 import dao.ClienteDAO;
 import dao.ProdutoDAO;
+import dao.VendaDAO;
+import dao.VendaProdutoDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -28,6 +32,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Cliente;
 import model.Produto;
+import model.Venda;
+import model.VendaProduto;
 
 public class ControllerRegistrarVenda implements Initializable {
 
@@ -39,6 +45,9 @@ public class ControllerRegistrarVenda implements Initializable {
 
 	@FXML
 	private Button btRegistrar;
+
+	@FXML
+	private Button btRemover;
 
 	@FXML
 	private TableColumn<Produto, String> columnDesconto;
@@ -59,10 +68,13 @@ public class ControllerRegistrarVenda implements Initializable {
 	private TableColumn<Produto, String> columnPrecoTotal;
 
 	@FXML
+	private TableColumn<Produto, String> columnTipoUN;
+
+	@FXML
 	private Label lblNumeroVenda;
 
 	@FXML
-	private TableView<?> tableProdutos;
+	private TableView<Produto> tableProdutos;
 
 	@FXML
 	private TextField txtCliente;
@@ -220,55 +232,82 @@ public class ControllerRegistrarVenda implements Initializable {
 					}
 				}
 			}
-		}
-	
-	private void carregarTableProdutos(ArrayList<Produto> ArrayProdutos) {
-	       ObservableList<Produto> produtosVendidos =
-	       FXCollections.observableArrayList(ArrayProdutos);
-	       columnIndiceProduto.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
-	       columnNomeProduto.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
-	       columnQuantidade.setCellValueFactory(new PropertyValueFactory<>("estoque"));    
-	       columnPrecoUn.setCellValueFactory(new PropertyValueFactory<>("precoUn"));
-	       columnPrecoTotal.setCellValueFactory(new PropertyValueFactory<>("precoTotal"));
-	       columnTipoUn.setCellValueFactory(new PropertyValueFactory<>("tipoUn"));
-	       
-	       tableProdutos.setItems(produtosVendidos);
-	   }
-		
 	}
-private ArrayList<Produto> arrayProdutos = new ArrayList<>();
+
+	private void carregarTableProdutos(ArrayList<Produto> ArrayProdutos) {
+		ObservableList<Produto> produtosVendidos = FXCollections.observableArrayList(ArrayProdutos);
+		columnIndiceProduto.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+		columnNomeProduto.setCellValueFactory(new PropertyValueFactory<>("nomeProd"));
+		columnQuantidade.setCellValueFactory(new PropertyValueFactory<>("estoque"));
+		columnPreco.setCellValueFactory(new PropertyValueFactory<>("precoUn"));
+		columnPrecoTotal.setCellValueFactory(new PropertyValueFactory<>("precoTotal"));
+		columnTipoUN.setCellValueFactory(new PropertyValueFactory<>("tipoUn"));
+
+		tableProdutos.setItems(produtosVendidos);
+	};
+
+	private ArrayList<Produto> arrayProdutos = new ArrayList<>();
+
 	@FXML
 	void actionAdicionar(ActionEvent event) {
-		  if(txtNomeCliente.getText().isEmpty() || txtProduto.getText().isEmpty() ||
-	               txtCpf.getText().isEmpty() || txtPrecoUN.getText().isEmpty() ||
-	               txtQuantidade.getText().isEmpty()) {
-	           Alert erro = new Alert(AlertType.ERROR);
-	           erro.setTitle("Erro!");
-	           erro.setContentText("Erro! verifique os campos e tente novamente!");
-	           erro.show();
-	       }else {
-	           Produto produto = new Produto();
-	           produto.setNomeProd(txtProduto.getText());
-	           produto.setTipoUn(txtTipoUN.getValue());
-	           produto.setPrecoUn(txtPrecoUN.getText());
-	           produto.setPrecoTotal(txtValorTotal.getText());
-	           produto.setEstoque(txtQuantidade.getText());
-	           
-	       double desconto = Double.parseDouble(txtDesconto.getText().replace(",", "."));
-	       double precoUni = Double.parseDouble(txtPrecoUN.getText().replace(",", "."));
-	       double quantidade = Double.parseDouble(txtQuantidade.getText());
+		if (txtCliente.getText().isEmpty() || txtProduto.getText().isEmpty() || txtCpf.getText().isEmpty()
+				|| txtPrecoUN.getText().isEmpty() || txtQuantidade.getText().isEmpty()) {
 
-	       double precoTotal = precoUni * quantidade - desconto;
-	       produto.setPrecoTotal("R$ "+ precoTotal);
-	       Double totalCompra = Double.parseDouble(txtValorTotal.getText().replace(",", "."));
-	       totalCompra = totalCompra + precoTotal;
-	       txtValorTotal.setText("" + String.format("%.2f", totalCompra));
-	       }
+			Alert erro = new Alert(AlertType.ERROR);
+			erro.setTitle("Erro!");
+			erro.setContentText("Erro! verifique os campos e tente novamente!");
+			erro.show();
+			return;
+		}
+
+		Produto produto = new Produto();
+		produto.setNomeProd(txtProduto.getText());
+		produto.setTipoUn(txtUN.getValue());
+		produto.setPrecoUn(txtPrecoUN.getText());
+		produto.setPrecoTotal(txtTotalCompra.getText());
+		produto.setEstoque(txtQuantidade.getText());
+
+		// Validação segura
+		double desconto = 0.0;
+		String descText = txtDesconto.getText().replace(",", ".").trim();
+		if (!descText.isEmpty()) {
+			desconto = Double.parseDouble(descText);
+		}
+
+		double precoUni = 0.0;
+		String precoUnText = txtPrecoUN.getText().replace("R$ ", "").replace(",", ".").trim();
+		if (!precoUnText.isEmpty()) {
+			precoUni = Double.parseDouble(precoUnText);
+		}
+
+		double quantidade = 0.0;
+		String qtdText = txtQuantidade.getText().trim();
+		if (!qtdText.isEmpty()) {
+			quantidade = Double.parseDouble(qtdText);
+		}
+
+		double precoTotal = precoUni * quantidade - desconto;
+		produto.setPrecoTotal("R$ " + String.format("%.2f", precoTotal));
+
+		double totalCompra = 0.0;
+		String totalText = txtTotalCompra.getText().replace(",", ".").trim();
+		if (!totalText.isEmpty()) {
+			totalCompra = Double.parseDouble(totalText);
+		}
+
+		totalCompra = totalCompra + precoTotal;
+		txtTotalCompra.setText("" + String.format("%.2f", totalCompra));
+		produto.setIdProduto("" + arrayProdutos.size() + 1);
+		arrayProdutos.add(produto);
+		carregarTableProdutos(arrayProdutos);
+
+		txtProduto.setText("");
+		txtDesconto.setText("0,00");
+		txtQuantidade.setText("");
+		txtPrecoUN.setText("");
+		txtUN.setValue("");
 	}
 
-	
-	
-	
 	@FXML
 	void actionCancelar(ActionEvent event) {
 		Stage stage = (Stage) btCancelar.getScene().getWindow();
@@ -277,10 +316,82 @@ private ArrayList<Produto> arrayProdutos = new ArrayList<>();
 
 	@FXML
 	void actionRegistrar(ActionEvent event) {
+		if (!txtFormaPagamento.getValue().toString().isEmpty() || !arrayProdutos.isEmpty()) {
+
+			Venda venda = new Venda();
+			venda.setIdFuncionario(controllerLogin.funcionario.getIdFuncionario());
+
+			Cliente cliente = new Cliente();
+			ClienteDAO clienteDAO = new ClienteDAO();
+			cliente.setCpfCliente(txtCpf.getText());
+			cliente = clienteDAO.search(cliente.getCpfCliente()).get(0);
+			venda.setIdCliente(cliente.getIdCliente());
+			venda.setPrecoTotal(txtTotalCompra.getText().replace(",", "."));
+			venda.setQuantTotal("" + arrayProdutos.size());
+			venda.setFormaPag(txtFormaPagamento.getValue());
+
+			VendaDAO vendaDAO = new VendaDAO();
+			vendaDAO.create(venda);
+
+			for (int i = 0; i < arrayProdutos.size(); i++) {
+				venda = vendaDAO.read().getLast();
+
+				VendaProduto vendaProduto = new VendaProduto();
+				VendaProdutoDAO vendaProdutoDAO = new VendaProdutoDAO();
+				Produto produto = new Produto();
+				ProdutoDAO produtoDAO = new ProdutoDAO();
+				produto = arrayProdutos.get(i);
+
+				vendaProduto.setIdVenda(venda.getIdVenda());
+				vendaProduto.setQuantidade(produto.getEstoque());
+				vendaProduto.setValorTotal(produto.getPrecoTotal().replace("R$ ", "").replace(",", ".").trim());
+				produto = produtoDAO.search(produto.getNomeProd()).get(0);
+				vendaProduto.setIdProduto(produto.getIdProduto());
+				vendaProdutoDAO.create(vendaProduto);
+			}
+
+			Alert aviso = new Alert(AlertType.INFORMATION);
+			aviso.setTitle("Venda registrada");
+			aviso.setContentText("A venda foi registrada com sucesso");
+			aviso.show();
+			arrayProdutos.clear();
+			carregarTableProdutos(arrayProdutos);
+			txtProduto.setText("");
+			txtPrecoUN.setText("");
+			txtDesconto.setText("0,00");
+			txtQuantidade.setText("");
+			txtUN.setValue("");
+			txtCliente.setText("");
+			txtCpf.setText("");
+			txtTotalCompra.setText("0,00");
+		}
 
 	}
-	
-	
+
+	@FXML
+	void actionRemover(ActionEvent event) {
+		int linha = tableProdutos.getSelectionModel().getSelectedIndex();
+		if (linha == -1) {
+			Alert erro = new Alert(AlertType.ERROR);
+			erro.setTitle("Erro!");
+			erro.setContentText("Erro! Selecione um produto para excluir!");
+			erro.show();
+		} else {
+			Alert msg = new Alert(AlertType.CONFIRMATION);
+			msg.setTitle("Excluir produto");
+			msg.setContentText("Deseja realmente excluir este Produto da venda?");
+
+			Optional<ButtonType> confirmacao = msg.showAndWait();
+			if (confirmacao.isPresent() && confirmacao.get() == ButtonType.OK) {
+				Alert msg2 = new Alert(AlertType.CONFIRMATION);
+				msg2.setTitle("Produto excluido!");
+				msg2.setContentText("O produto foi excluido com sucesso da Veda!");
+				msg2.show();
+				arrayProdutos.remove(linha);
+				carregarTableProdutos(arrayProdutos);
+			}
+		}
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -301,8 +412,6 @@ private ArrayList<Produto> arrayProdutos = new ArrayList<>();
 				.setOnAutoCompleted(event -> actionNomeClick(null));
 		TextFields.bindAutoCompletion(txtProduto, controllerLogin.listaProdutos)
 				.setOnAutoCompleted(event -> actionProdutoClick(null));
-		
-		
 
 	}
 

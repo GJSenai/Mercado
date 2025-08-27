@@ -58,6 +58,24 @@
     -fx-effect: dropshadow(gaussian, #ff0033, 35, 0.4, 0, 0);
 }
 
+#btRemover  {
+    -fx-background-color: #2b0000;
+    -fx-text-fill: #CD5C5C;
+    -fx-font-weight: bold;
+
+    -fx-border-color: #CD5C5C;       /* vermelho neon */
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+
+    -fx-effect: dropshadow(gaussian, #ff0033, 35, 0.4, 0, 0);
+}
+
+#btRemover:hover {
+    -fx-effect: dropshadow(gaussian, #ff0033, 35, 0.6, 0, 0);
+    -fx-text-fill: #ff6666;
+}
+
 /* Hover do botão Sair */
 #btSairLogin:hover {
     -fx-effect: dropshadow(gaussian, #ff0033, 35, 0.6, 0, 0);

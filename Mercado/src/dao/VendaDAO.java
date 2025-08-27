@@ -16,13 +16,12 @@ public class VendaDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO Venda (idCliente, idFuncionario, dataVenda, precoTotal, formaPag, quantTotal) VALUES (?, ?, ?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO Venda VALUES (?, ?, GETDATE(), ?, ?, ?)");
             stmt.setString(1, venda.getIdCliente());
-            stmt.setString(2, venda.getIdFuncionario());
-            stmt.setString(3, venda.getDataVenda());
-            stmt.setString(4, venda.getPrecoTotal());
-            stmt.setString(5, venda.getFormaPag());
-            stmt.setString(6, venda.getQuantTotal());
+            stmt.setString(2, venda.getIdFuncionario());            
+            stmt.setString(3, venda.getPrecoTotal());
+            stmt.setString(4, venda.getFormaPag());
+            stmt.setString(5, venda.getQuantTotal());
             stmt.execute();
             System.out.println("Venda cadastrada!");
 
